@@ -1,0 +1,34 @@
+{
+  "name": "babel-plugin-auto-symbol-description",
+  "version": "0.0.1",
+  "description": "A Babel plugin to automatically set Symbol descriptions.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel -d dist index.js",
+    "prepublish": "npm test && npm run build",
+    "test": "mocha --compilers js:babel/register --reporter dot",
+    "test:watch": "npm test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kentor/babel-plugin-auto-symbol-description"
+  },
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "dx",
+    "redux",
+    "symbol"
+  ],
+  "author": "Kenneth Chung <ken70r@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kentor/babel-plugin-auto-symbol-description/issues"
+  },
+  "homepage": "https://github.com/kentor/babel-plugin-auto-symbol-description",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "expect": "^1.9.0",
+    "mocha": "^2.3.0"
+  }
+}
