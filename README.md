@@ -1,4 +1,4 @@
-# Auto Symbol Description [![Build Status](https://travis-ci.org/kentor/babel-plugin-auto-symbol-description.svg)](https://travis-ci.org/kentor/babel-plugin-auto-symbol-description)
+# Auto Symbol Description [![Build Status](https://travis-ci.org/kentor/babel-plugin-auto-symbol-description.svg)](https://travis-ci.org/kentor/babel-plugin-auto-symbol-description) [![npm](https://img.shields.io/npm/v/babel-plugin-auto-symbol-description.svg)](https://www.npmjs.com/package/babel-plugin-auto-symbol-description)
 
 A [Babel][b] plugin to automatically set [Symbol][s] descriptions.
 
