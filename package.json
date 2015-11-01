@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel -d dist index.js",
+    "lint": "eslint .",
     "prepublish": "npm test && npm run build",
     "test": "mocha --compilers js:babel/register --reporter dot",
     "test:watch": "npm test -- --watch"
@@ -28,6 +29,8 @@
   "homepage": "https://github.com/kentor/babel-plugin-auto-symbol-description",
   "devDependencies": {
     "babel": "^5.8.23",
+    "eslint": "^1.8.0",
+    "eslint-config-kentor": "^1.0.0",
     "expect": "^1.9.0",
     "mocha": "^2.3.0"
   }

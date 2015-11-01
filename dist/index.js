@@ -39,7 +39,7 @@ exports['default'] = function (_ref) {
   return new Plugin('remove-symbol-description', {
     visitor: {
       AssignmentExpression: function AssignmentExpression(node, parent, scope, file) {
-        if (node.operator == '=') {
+        if (node.operator === '=') {
           var left = node.left;
           var right = node.right;
 

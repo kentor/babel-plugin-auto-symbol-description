@@ -29,7 +29,7 @@ export default function({ Plugin, types: t }) {
   return new Plugin('remove-symbol-description', {
     visitor: {
       AssignmentExpression(node, parent, scope, file) {
-        if (node.operator == '=') {
+        if (node.operator === '=') {
           const left = node.left;
           const right = node.right;
 

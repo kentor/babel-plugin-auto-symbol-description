@@ -7,7 +7,7 @@ describe('babel-plugin-auto-symbol-description', () => {
     const { code } = babel.transform(source, {
       plugins: [require('../index')],
     });
-    expect(code).toBe('"use strict";\n\n' + transformed);
+    expect(code).toBe(`"use strict";\n\n${transformed}`);
   }
 
   function expectNoTransform(source) {
