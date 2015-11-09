@@ -1,10 +1,10 @@
-import path from 'path';
+const path = require('path');
 
 function assignDescriptionToSymbol(node, name, file) {
   const description = generateDescription(name, file);
   node.arguments = [{
     raw: `"${description}"`,
-    type: 'Literal',
+    type: 'StringLiteral',
     value: description,
   }];
 }
@@ -25,10 +25,10 @@ function isSymbolWithoutDescription(node, t) {
     node.arguments.length === 0;
 }
 
-export default function({ Plugin, types: t }) {
-  return new Plugin('remove-symbol-description', {
+module.exports = function({ types: t }) {
+  return {
     visitor: {
-      AssignmentExpression(node, parent, scope, file) {
+      AssignmentExpression({ node }, { file }) {
         if (node.operator === '=') {
           const left = node.left;
           const right = node.right;
@@ -37,18 +37,16 @@ export default function({ Plugin, types: t }) {
             assignDescriptionToSymbol(right, left.name, file);
           }
         }
-        return node;
       },
 
-      VariableDeclaration(node, parent, scope, file) {
+      VariableDeclaration({ node }, { file }) {
         node.declarations.forEach(declaration => {
           const init = declaration.init;
           if (init && isSymbolWithoutDescription(init, t)) {
             assignDescriptionToSymbol(init, declaration.id.name, file);
           }
         });
-        return node;
       },
     },
-  });
-}
+  };
+};

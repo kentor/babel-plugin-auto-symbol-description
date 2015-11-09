@@ -1,13 +1,12 @@
-const babel = require('babel');
+const babel = require('babel-core');
 const expect = require('expect');
 const path = require('path');
+const plugin = require('../index');
 
 describe('babel-plugin-auto-symbol-description', () => {
   function expectTransform(source, transformed) {
-    const { code } = babel.transform(source, {
-      plugins: [require('../index')],
-    });
-    expect(code).toBe(`"use strict";\n\n${transformed}`);
+    const { code } = babel.transform(source, { plugins: [plugin] });
+    expect(code).toBe(transformed);
   }
 
   function expectNoTransform(source) {
@@ -45,7 +44,7 @@ describe('babel-plugin-auto-symbol-description', () => {
   it('prepends description with filename', () => {
     const { code } = babel.transformFileSync(
       path.join(__dirname, 'fixtures', 'TodoActions.js'),
-      { plugins: [require('../index')] }
+      { plugins: [plugin] }
     );
     expect(code).toBe(
       '"use strict";\n\nvar CREATE = Symbol("TodoActions.CREATE");'
