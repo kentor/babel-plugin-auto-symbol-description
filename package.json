@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-auto-symbol-description",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Babel plugin to automatically set Symbol descriptions.",
   "main": "dist/index.js",
   "scripts": {
