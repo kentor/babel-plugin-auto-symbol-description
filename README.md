@@ -2,6 +2,7 @@
 
 A [Babel][b] plugin to automatically set [Symbol][s] descriptions.
 
+**Note:** Babel 7 is supported in version 2.0+.
 **Note:** Babel 6 is supported in version 1.0+. Keep using version 0.0.1
 for Babel 5 support.
 
