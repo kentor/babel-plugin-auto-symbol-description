@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 var path = require('path');
 
 function assignDescriptionToSymbol(node, name, file) {
   var description = generateDescription(name, file);
   node.arguments = [{
-    raw: '"' + description + '"',
+    raw: "\"".concat(description, "\""),
     type: 'StringLiteral',
     value: description
   }];
@@ -13,20 +13,21 @@ function assignDescriptionToSymbol(node, name, file) {
 
 function generateDescription(name, file) {
   if (file && file.opts && file.opts.filename && file.opts.filename !== 'unknown') {
-    var basename = path.basename(file.log.filename).split('.')[0];
-    return basename + '.' + name;
+    var basename = path.basename(file.opts.filename).split('.')[0];
+    return "".concat(basename, ".").concat(name);
   } else {
     return name;
   }
 }
 
 function isSymbolWithoutDescription(node, t) {
-  return t.isCallExpression(node) && t.isIdentifier(node.callee, { name: 'Symbol' }) && node.arguments.length === 0;
+  return t.isCallExpression(node) && t.isIdentifier(node.callee, {
+    name: 'Symbol'
+  }) && node.arguments.length === 0;
 }
 
 module.exports = function (_ref) {
   var t = _ref.types;
-
   return {
     visitor: {
       AssignmentExpression: function AssignmentExpression(_ref2, _ref3) {
@@ -45,9 +46,9 @@ module.exports = function (_ref) {
       VariableDeclaration: function VariableDeclaration(_ref4, _ref5) {
         var node = _ref4.node;
         var file = _ref5.file;
-
         node.declarations.forEach(function (declaration) {
           var init = declaration.init;
+
           if (init && isSymbolWithoutDescription(init, t)) {
             assignDescriptionToSymbol(init, declaration.id.name, file);
           }
