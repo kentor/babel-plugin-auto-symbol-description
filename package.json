@@ -7,7 +7,7 @@
     "build": "babel -d dist index.js",
     "lint": "eslint .",
     "prepublish": "npm test && npm run build",
-    "test": "mocha --compilers js:babel-core/register --reporter dot",
+    "test": "mocha --compilers js:@babel/register --reporter dot",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
@@ -28,10 +28,10 @@
   },
   "homepage": "https://github.com/kentor/babel-plugin-auto-symbol-description",
   "devDependencies": {
-    "babel": "6.5.2",
-    "babel-cli": "6.16.0",
-    "babel-core": "6.16.0",
-    "babel-preset-es2015": "6.16.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "eslint": "3.6.1",
     "eslint-config-kentor": "3.0.1",
     "expect": "1.20.2",

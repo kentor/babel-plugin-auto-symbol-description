@@ -12,7 +12,7 @@ function assignDescriptionToSymbol(node, name, file) {
 function generateDescription(name, file) {
   if (file && file.opts && file.opts.filename &&
       file.opts.filename !== 'unknown') {
-    const basename = path.basename(file.log.filename).split('.')[0];
+    const basename = path.basename(file.opts.filename).split('.')[0];
     return `${basename}.${name}`;
   } else {
     return name;
